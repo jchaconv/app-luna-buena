@@ -24,7 +24,7 @@ import com.google.zxing.integration.android.IntentResult;
 
 public class HomeFragment extends Fragment {
 
-    TextView txtCodigo;
+    TextView txtCodigo; //comentario de prueba
     Button btnCodigo;
 
     public HomeFragment(){
