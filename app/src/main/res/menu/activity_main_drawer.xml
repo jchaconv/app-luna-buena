@@ -15,7 +15,7 @@
             android:title="Perfil de usuario" />
 
         <item
-            android:id="@+id/consultarAsistenciaFragment"
+            android:id="@+id/mostrarAsistenciaFragment"
             android:icon="@android:drawable/btn_star"
             android:title="Mis Asistencias" />
 

@@ -40,8 +40,6 @@ public class ConsultarUsuarioFragment extends Fragment {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
-    private SharedPreferences prefs;
-
     private TextView txtNombre, txtApellidoPaterno, txtApellidoMaterno, txtCorreo, txtCelular;
     private Button btnConsultarUsuario;
 
@@ -104,7 +102,6 @@ public class ConsultarUsuarioFragment extends Fragment {
                 JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(ApiURL, new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray response) {
-                        Gson gson = new Gson();
 
                         try {
 
@@ -133,28 +130,6 @@ public class ConsultarUsuarioFragment extends Fragment {
                         Toast.makeText(getContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 });
-
-                /*
-                JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, ApiURL, null, new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        try {
-                            Gson gson = new Gson();
-                            Usuario respuesta = gson.fromJson(response.toString(), Usuario.class);
-                            String correo = response.getJSONArray("").getJSONObject(0).getString("traC_EMAIL").toString();
-                            Toast.makeText(getContext(), correo, Toast.LENGTH_SHORT).show();
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                }, new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(getContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
-                    }
-                });
-
-                queue.add(jsonObjectRequest); */
                 queue.add(jsonArrayRequest);
             }
         });

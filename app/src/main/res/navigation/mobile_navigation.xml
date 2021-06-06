@@ -22,19 +22,22 @@
         android:name="com.example.asistencia.ui.slideshow.SlideshowFragment"
         android:label="@string/menu_slideshow"
         tools:layout="@layout/fragment_slideshow" />
+
     <fragment
         android:id="@+id/consultarUsuarioFragment"
         android:name="com.example.asistencia.ConsultarUsuarioFragment"
         android:label="Información de usuario"
         tools:layout="@layout/fragment_consultar_usuario" />
+
     <fragment
         android:id="@+id/registrarJustificacionFragment"
         android:name="com.example.asistencia.RegistrarJustificacionFragment"
         android:label="fragment_registrar_justificacion"
         tools:layout="@layout/fragment_registrar_justificacion" />
     <fragment
-        android:id="@+id/consultarAsistenciaFragment"
-        android:name="com.example.asistencia.ConsultarAsistenciaFragment"
-        android:label="fragment_consultar_asistencia"
-        tools:layout="@layout/fragment_consultar_asistencia" />
+        android:id="@+id/mostrarAsistenciaFragment"
+        android:name="com.example.asistencia.MostrarAsistenciaFragment"
+        android:label="fragment_mostrar_asistencia"
+        tools:layout="@layout/fragment_mostrar_asistencia" />
+
 </navigation>
