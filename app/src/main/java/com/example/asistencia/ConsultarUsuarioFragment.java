@@ -2,6 +2,7 @@ package com.example.asistencia;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -10,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -17,6 +19,7 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.ImageRequest;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
@@ -42,6 +45,7 @@ public class ConsultarUsuarioFragment extends Fragment {
 
     private TextView txtNombre, txtApellidoPaterno, txtApellidoMaterno, txtCorreo, txtCelular;
     private Button btnConsultarUsuario;
+    private ImageView imagen;
 
     private static RequestQueue queue;
     private static String ApiURL = "http://dongato-001-site1.ctempurl.com/api/Trabajador/SelectById?idTrabajador=5";
@@ -93,10 +97,12 @@ public class ConsultarUsuarioFragment extends Fragment {
         txtCorreo = (TextView) vista.findViewById(R.id.txtCorreo);
         txtCelular = (TextView) vista.findViewById(R.id.txtCelular);
         btnConsultarUsuario = (Button) vista.findViewById(R.id.btnConsultarUsuario);
+        imagen = (ImageView) vista.findViewById(R.id.imagenId);
 
         btnConsultarUsuario.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 queue = Volley.newRequestQueue(getContext());
 
                 JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(ApiURL, new Response.Listener<JSONArray>() {
@@ -111,6 +117,8 @@ public class ConsultarUsuarioFragment extends Fragment {
                             String celular = response.getJSONObject(0).getString("traN_TELEFONO").toString();
                             String correo = response.getJSONObject(0).getString("traC_EMAIL").toString();
 
+                            String imagenUrl = response.getJSONObject(0).getString("traC_IMAGE_URL").toString();
+
 
                             //Toast.makeText(getContext(), correo, Toast.LENGTH_SHORT).show();
                             txtNombre.setText("Nombre: " + nombre);
@@ -118,6 +126,9 @@ public class ConsultarUsuarioFragment extends Fragment {
                             txtApellidoMaterno.setText("Apellido Materno: " + apellidoM);
                             txtCorreo.setText("Correo: " + correo);
                             txtCelular.setText("Celular: " + celular);
+
+                            //Llamando al método que trae la imagen
+                            cargarImagen(imagenUrl);
 
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -136,4 +147,26 @@ public class ConsultarUsuarioFragment extends Fragment {
 
         return vista;
     }
+
+    //método que trae la imagen
+    private void cargarImagen(String imagenUrl) {
+
+        //String imageUrl = "http://aplicaciones.soltechsac.com/Repositorio/Blob/Soltech.Asistencia/lima.jpg";
+        ImageRequest imageRequest = new ImageRequest(imagenUrl,
+                new Response.Listener<Bitmap>() {
+                    @Override
+                    public void onResponse(Bitmap response) {
+                        imagen.setImageBitmap(response);
+                    }
+                }, 0, 0, ImageView.ScaleType.CENTER, null, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getContext(), "Error al cargar imagen", Toast.LENGTH_SHORT).show();
+            }
+        });
+        queue.add(imageRequest);
+
+    }
+
+
 }
