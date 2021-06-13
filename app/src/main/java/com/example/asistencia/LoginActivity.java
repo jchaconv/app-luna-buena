@@ -35,7 +35,6 @@ public class LoginActivity extends AppCompatActivity {
     private EditText edtUsuario, edtPassword;
     private Button btnLogin;
     private static RequestQueue queue;
-    //private static String ApiURL = "http://dongato-001-site1.ctempurl.com/api/Cuenta/Login";
     private static String ApiURL = "http://b3rs3rk3r-002-site2.htempurl.com/api/Cuenta/Login";
 
     @Override
@@ -68,6 +67,28 @@ public class LoginActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(JSONObject response) {
                         try {//DESERIALIZANDO RESPUESTA
+
+
+                            Gson gson = new Gson();
+                            try {
+                                LoginViewModel respuesta = gson.fromJson(response.toString(), LoginViewModel.class);
+                                if (respuesta.getValido() != null && !respuesta.getValido()) { //VALIDANDO CREDENCIALES ENVIADAS
+                                    Toast.makeText(getApplicationContext(), respuesta.getRespuesta(), Toast.LENGTH_SHORT).show();
+                                    return;
+                                }
+                            } catch (Exception e) {
+                                Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
+                            }
+                            //GUARDANDO VARIABLES DE SESION
+                            String idUser = response.getJSONArray("datos").getJSONObject(0).getString("traN_ID_TRABAJADOR");
+                            saveLoginSharedPreferences("idusuario", idUser);
+                            //ACCEDIENDO A MAIN
+                            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);   //PARA QUE CUANDO SE PRESIONE ATRAS NO REGRESE AL LOGIN
+                            startActivity(intent);
+
+
+                            /*
                             Gson gson = new Gson();
                             LoginViewModel respuesta = gson.fromJson(response.toString(), LoginViewModel.class);
                             if (respuesta.getValido() != null && !respuesta.getValido()) { //VALIDANDO CREDENCIALES ENVIADAS
@@ -81,10 +102,21 @@ public class LoginActivity extends AppCompatActivity {
                             SharedPreferences.Editor editor = prefs.edit();
                             editor.putString("usersystem", response.getJSONArray("datos").getJSONObject(0).getString("usersystem"));
                             editor.apply();
+                            */
+
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
                     }
+
+                    //quitar
+                    public void saveLoginSharedPreferences(String key, String value) {
+                        SharedPreferences prefs = getSharedPreferences("LoginPref", Context.MODE_PRIVATE);
+                        SharedPreferences.Editor editor = prefs.edit();
+                        editor.putString(key, value);
+                        editor.apply();
+                    }
+
                 }, new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
@@ -99,4 +131,6 @@ public class LoginActivity extends AppCompatActivity {
     private void setCredentialsIfExist() {
 
     }
+
+
 }
