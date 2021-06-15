@@ -28,6 +28,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import Models.LoginViewModel;
+import cn.pedant.SweetAlert.SweetAlertDialog;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -54,7 +55,7 @@ public class LoginActivity extends AppCompatActivity {
                 String usuario = edtUsuario.getText().toString();
                 String password = edtPassword.getText().toString();
                 if (edtUsuario.getText().toString().trim().isEmpty() || edtPassword.getText().toString().trim().isEmpty()) {
-                    Toast.makeText(getApplicationContext(), "Ambos campos son obligatorios", Toast.LENGTH_SHORT).show();
+                    new SweetAlertDialog(LoginActivity.this, SweetAlertDialog.WARNING_TYPE).setTitleText("Ambos campos son obligatorios").show();
                     return;
                 }
                 //CONECTANDO CON EL API
@@ -67,13 +68,11 @@ public class LoginActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(JSONObject response) {
                         try {//DESERIALIZANDO RESPUESTA
-
-
                             Gson gson = new Gson();
                             try {
                                 LoginViewModel respuesta = gson.fromJson(response.toString(), LoginViewModel.class);
                                 if (respuesta.getValido() != null && !respuesta.getValido()) { //VALIDANDO CREDENCIALES ENVIADAS
-                                    Toast.makeText(getApplicationContext(), respuesta.getRespuesta(), Toast.LENGTH_SHORT).show();
+                                    new SweetAlertDialog(LoginActivity.this, SweetAlertDialog.ERROR_TYPE).setTitleText(respuesta.getRespuesta()).show();
                                     return;
                                 }
                             } catch (Exception e) {
