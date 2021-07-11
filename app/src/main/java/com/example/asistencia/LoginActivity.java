@@ -11,9 +11,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.android.volley.NoConnectionError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
+import com.android.volley.ServerError;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
@@ -36,14 +38,13 @@ public class LoginActivity extends AppCompatActivity {
     private EditText edtUsuario, edtPassword;
     private Button btnLogin;
     private static RequestQueue queue;
-    private static String ApiURL = "http://b3rs3rk3r-002-site2.htempurl.com/api/Cuenta/Login";
+    private static String ApiURL = "http://b3rs3rk3r-002-site2.htempurl.com/api";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         prefs = getSharedPreferences("Prefences", Context.MODE_PRIVATE);
-        setCredentialsIfExist();
         edtUsuario = findViewById(R.id.edtUsuario);
         edtPassword = findViewById(R.id.edtPassword);
         btnLogin = findViewById(R.id.btnLogin);
@@ -64,7 +65,7 @@ public class LoginActivity extends AppCompatActivity {
                 params.put("username", edtUsuario.getText().toString());
                 params.put("password", edtPassword.getText().toString());
                 JSONObject jsonObject = new JSONObject(params);
-                JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, ApiURL, jsonObject, new Response.Listener<JSONObject>() {
+                JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, ApiURL + "/Cuenta/Login", jsonObject, new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
                         try {//DESERIALIZANDO RESPUESTA
@@ -119,17 +120,18 @@ public class LoginActivity extends AppCompatActivity {
                 }, new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
+                        if(error instanceof ServerError) {
+                            Toast.makeText(getApplicationContext(), "Error interno del servidor", Toast.LENGTH_SHORT).show();
+                        }
+                        else if(error instanceof NoConnectionError) {
+                            Toast.makeText(getApplicationContext(), "No hay conexión a internet", Toast.LENGTH_SHORT).show();
+                        }else{
+                            Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
+                        }
                     }
                 });
                 queue.add(jsonObjectRequest);
             }
         });
     }
-
-    private void setCredentialsIfExist() {
-
-    }
-
-
 }

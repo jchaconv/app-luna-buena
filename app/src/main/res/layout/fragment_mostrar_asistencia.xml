@@ -1,26 +1,184 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".MostrarAsistenciaFragment">
 
-    <!-- TODO: Update blank fragment layout -->
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:orientation="vertical">
+
     <TextView
-        android:id="@+id/text_view_result"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="#2EF60B"
-        android:textSize="20sp"
-        android:textStyle="bold" />
-
-    <Button
-        android:id="@+id/button_consultar_asistencia"
-        android:layout_width="wrap_content"
+        android:text="MIS ASISTENCIAS"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textFontWeight="900"
+        android:textSize="18dp"></TextView>
+    <CalendarView
+        android:id="@+id/calendarView"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="29dp"
-        android:text="Mostrar Asistencias"/>
+        android:layout_weight="1" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingTop="20dp">
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:orientation="horizontal">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Entradas"
+            android:textAlignment="center"
+            android:textColor="#fece2d"
+            android:textFontWeight="900"
+            android:layout_weight="1"
+            android:textSize="18dp"></TextView>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Salidas"
+            android:textAlignment="center"
+            android:textColor="#fece2d"
+            android:textFontWeight="900"
+            android:layout_weight="1"
+            android:textSize="18dp"></TextView>
+      </LinearLayout>
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:padding="20dp"
+          android:orientation="horizontal">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textAlignment="center"
+            android:id="@+id/txtTrabajador"
+            android:textColor="@color/white"
+            android:textFontWeight="900"
+            android:layout_weight="1"
+            android:textSize="14dp"></TextView>
+      </LinearLayout>
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:padding="20dp"
+          android:orientation="horizontal">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textAlignment="center"
+            android:text="IP"
+            android:textColor="@color/white"
+            android:textFontWeight="900"
+            android:layout_weight="1"
+            android:textSize="14dp"></TextView>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textAlignment="center"
+            android:id="@+id/txtIpEntrada"
+            android:textColor="@color/white"
+            android:textFontWeight="900"
+            android:layout_weight="1"
+            android:textSize="14dp"></TextView>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textAlignment="center"
+            android:text="IP"
+            android:textColor="@color/white"
+            android:textFontWeight="900"
+            android:layout_weight="1"
+            android:textSize="14dp"></TextView>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textAlignment="center"
+            android:id="@+id/txtIpSalida"
+            android:textColor="@color/white"
+            android:textFontWeight="900"
+            android:layout_weight="1"
+            android:textSize="14dp"></TextView>
+      </LinearLayout>
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:padding="20dp"
+          android:orientation="horizontal">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textAlignment="center"
+            android:text="Hora"
+            android:textColor="@color/white"
+            android:textFontWeight="900"
+            android:layout_weight="1"
+            android:textSize="14dp"></TextView>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textAlignment="center"
+            android:id="@+id/txtHoraEntrada"
+            android:textColor="@color/white"
+            android:textFontWeight="900"
+            android:layout_weight="1"
+            android:textSize="14dp"></TextView>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textAlignment="center"
+            android:text="Hora"
+            android:textColor="@color/white"
+            android:textFontWeight="900"
+            android:layout_weight="1"
+            android:textSize="14dp"></TextView>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textAlignment="center"
+            android:id="@+id/txtHoraSalida"
+            android:textColor="@color/white"
+            android:textFontWeight="900"
+            android:layout_weight="1"
+            android:textSize="14dp"></TextView>
+      </LinearLayout>
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:padding="20dp"
+          android:orientation="horizontal">
 
-</RelativeLayout>
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:id="@+id/txtGpsEntrada"
+            android:visibility="invisible"
+            android:text="Ver ubicación"
+            android:textColor="@color/white"
+            android:layout_height="wrap_content">
+        </com.google.android.material.button.MaterialButton>
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:id="@+id/txtGpsSalida"
+            android:visibility="invisible"
+            android:text="Ver ubicación"
+            android:textColor="@color/white"
+            android:layout_height="wrap_content">
+        </com.google.android.material.button.MaterialButton>
+
+      </LinearLayout>
+    </LinearLayout>
+  </LinearLayout>
+</LinearLayout>

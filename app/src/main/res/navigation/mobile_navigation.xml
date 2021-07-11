@@ -12,31 +12,28 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/nav_slideshow"
-        android:name="com.example.asistencia.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
-
-    <fragment
         android:id="@+id/consultarUsuarioFragment"
         android:name="com.example.asistencia.ConsultarUsuarioFragment"
-        android:label="Información de usuario"
+        android:label="Información Personal"
         tools:layout="@layout/fragment_consultar_usuario" />
+
+    <fragment
+        android:id="@+id/mostrarAsistenciaFragment"
+        android:name="com.example.asistencia.MostrarAsistenciaFragment"
+        android:label="Mis Asistencias"
+        tools:layout="@layout/fragment_mostrar_asistencia" />
+
+
+    <fragment
+        android:id="@+id/mostrarJustificacionesFragment"
+        android:name="com.example.asistencia.MostrarJustificacionesFragment"
+        android:label="Mis Justificaciones"
+        tools:layout="@layout/activity_tabs" />
 
     <fragment
         android:id="@+id/registrarJustificacionFragment"
         android:name="com.example.asistencia.RegistrarJustificacionFragment"
-        android:label="fragment_registrar_justificacion"
+        android:label="Registro de Justificaciones"
         tools:layout="@layout/fragment_registrar_justificacion" />
-    <fragment
-        android:id="@+id/mostrarAsistenciaFragment"
-        android:name="com.example.asistencia.MostrarAsistenciaFragment"
-        android:label="fragment_mostrar_asistencia"
-        tools:layout="@layout/fragment_mostrar_asistencia" />
-    <fragment
-        android:id="@+id/mostrarJustificacionesFragment"
-        android:name="com.example.asistencia.MostrarJustificacionesFragment"
-        android:label="fragment_mostrar_justificaciones"
-        tools:layout="@layout/fragment_mostrar_justificaciones" />
 
 </navigation>
