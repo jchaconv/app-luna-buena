@@ -151,7 +151,15 @@ public class MostrarAsistenciaFragment extends Fragment {
 
                                 String hora = row.getString("asiC_HORA").toString();
 
+                                //Tipo de asistencia
                                 String tipo = row.getString("asiC_TIPO").toString();
+                                if (tipo.equalsIgnoreCase("S")) {
+                                    tipo = "Salida";
+                                } else if (tipo.equalsIgnoreCase("E")) {
+                                    tipo = "Entrada";
+                                } else {
+                                    tipo = "No especificado";
+                                }
 
                                 mTextViewResult.append("Fecha: " + sFecha + "\n" + "Hora: " + hora + "\n" + "Tipo: "
                                         + tipo + "\n" + "===============" + "\n");

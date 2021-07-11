@@ -20,13 +20,15 @@
             android:title="Mis Asistencias" />
 
         <item
+            android:id="@+id/mostrarJustificacionesFragment"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="Mis justificaciones" />
+
+        <item
             android:id="@+id/registrarJustificacionFragment"
             android:icon="@drawable/ic_menu_manage"
             android:title="Registrar Justificación" />
-        <item
-            android:id="@+id/nav_gallery"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="Mis justificaciones" />
+
         <item
             android:id="@+id/nav_slideshow"
             android:icon="@drawable/ic_menu_slideshow"
