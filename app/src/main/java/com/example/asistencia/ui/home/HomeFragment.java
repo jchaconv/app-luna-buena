@@ -141,7 +141,9 @@ public class HomeFragment extends Fragment {
                     calendar.setMinimalDaysInFirstWeek(4);
                     calendar.setTime(new Date());
                     int numeroSemana = calendar.get(Calendar.DAY_OF_WEEK);
-                    numeroSemana = numeroSemana == 1 ? 7 : numeroSemana - 2;
+                    //numeroSemana = numeroSemana == 1 ? 7 : numeroSemana - 2;
+                    numeroSemana = numeroSemana == 0 ? 7 : numeroSemana - 1;
+
                     queue = Volley.newRequestQueue(getActivity());
                     StringRequest stringRequest = new StringRequest(Request.Method.GET, ApiURL + "Horario/ObtenerHorario?diaActual="+numeroSemana+"&idTrabajador="+Integer.parseInt(getFromSharedPreferences("idusuario")), new Response.Listener<String>() {
                         @Override
