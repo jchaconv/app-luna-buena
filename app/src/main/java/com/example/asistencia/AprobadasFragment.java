@@ -96,7 +96,8 @@ public class AprobadasFragment extends Fragment {
                     try {
                         for (int i = 0; i < response.length(); i++) {
                             String estadoJustificacion = response.getJSONObject(i).getString("jusN_ESTADO_JUSTIFICACION").toString();
-                            if (estadoJustificacion != null && !estadoJustificacion.isEmpty() && estadoJustificacion.equalsIgnoreCase("1")) {
+                            if (estadoJustificacion != null && !estadoJustificacion.isEmpty() &&
+                                    (estadoJustificacion.equalsIgnoreCase("1") || estadoJustificacion.equalsIgnoreCase("2"))) {
                                 descEstadoJustificacion = "Solicitud Aprobada";
                                 if (descEstadoJustificacion.equalsIgnoreCase("Solicitud Aprobada")) {
                                     String tituloJustificacion = response.getJSONObject(i).getString("jusC_JUSTIFICACION").toString();
