@@ -25,10 +25,10 @@
 
 
     <fragment
-        android:id="@+id/mostrarJustificacionesFragment"
-        android:name="com.example.asistencia.MostrarJustificacionesFragment"
-        android:label="Mis Justificaciones"
-        tools:layout="@layout/activity_tabs" />
+        android:id="@+id/justificacionesAprobadasFragment"
+        android:name="com.example.asistencia.AprobadasFragment"
+        android:label="Justificaciones Aprobadas"
+        tools:layout="@layout/fragment_aprobadas" />
 
     <fragment
         android:id="@+id/registrarJustificacionFragment"

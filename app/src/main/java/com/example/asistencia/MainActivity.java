@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 R.id.nav_home,
                 R.id.consultarUsuarioFragment,
                 R.id.mostrarAsistenciaFragment,
-                R.id.mostrarJustificacionesFragment,
+                R.id.justificacionesAprobadasFragment,
                 R.id.registrarJustificacionFragment)
                 .setDrawerLayout(drawer)
                 .build();

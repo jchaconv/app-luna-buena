@@ -20,9 +20,9 @@
             android:title="Mis Asistencias" />
 
         <item
-            android:id="@+id/mostrarJustificacionesFragment"
+            android:id="@+id/justificacionesAprobadasFragment"
             android:icon="@drawable/ic_menu_gallery"
-            android:title="Mis justificaciones" />
+            android:title="Justificaciones Aprobadas" />
 
         <item
             android:id="@+id/registrarJustificacionFragment"
