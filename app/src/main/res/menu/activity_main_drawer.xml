@@ -25,9 +25,9 @@
             android:title="Justificaciones Aprobadas" />
 
         <item
-            android:id="@+id/registrarJustificacionFragment"
+            android:id="@+id/justificacionesRechazadasFragment"
             android:icon="@drawable/ic_menu_manage"
-            android:title="Registrar Justificación" />
+            android:title="Justificaciones Rechazadas" />
 
        </group>
 </menu>

@@ -31,9 +31,9 @@
         tools:layout="@layout/fragment_aprobadas" />
 
     <fragment
-        android:id="@+id/registrarJustificacionFragment"
-        android:name="com.example.asistencia.RegistrarJustificacionFragment"
-        android:label="Registro de Justificaciones"
-        tools:layout="@layout/fragment_registrar_justificacion" />
+        android:id="@+id/justificacionesRechazadasFragment"
+        android:name="com.example.asistencia.RechazadasFragment"
+        android:label="Justificaciones Rechazadas"
+        tools:layout="@layout/fragment_rechazadas" />
 
 </navigation>
