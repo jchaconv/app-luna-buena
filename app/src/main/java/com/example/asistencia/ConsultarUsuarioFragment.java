@@ -46,8 +46,6 @@ import cn.pedant.SweetAlert.SweetAlertDialog;
  */
 public class ConsultarUsuarioFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
@@ -61,7 +59,6 @@ public class ConsultarUsuarioFragment extends Fragment {
 
     private String url_imagen_perfil = "";
 
-    // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
 
@@ -69,15 +66,6 @@ public class ConsultarUsuarioFragment extends Fragment {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment ConsultarUsuarioFragment.
-     */
-    // TODO: Rename and change types and number of parameters
     public static ConsultarUsuarioFragment newInstance(String param1, String param2) {
         ConsultarUsuarioFragment fragment = new ConsultarUsuarioFragment();
         Bundle args = new Bundle();
@@ -181,7 +169,7 @@ public class ConsultarUsuarioFragment extends Fragment {
                         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.PUT, ApiURL + "Trabajador/UpdateDatos", jsonObject, new Response.Listener<JSONObject>() {
                             @Override
                             public void onResponse(JSONObject response) {
-                                new SweetAlertDialog(getActivity(), SweetAlertDialog.SUCCESS_TYPE).setTitleText("Datos actualizados correctamente3").show();
+                                new SweetAlertDialog(getActivity(), SweetAlertDialog.SUCCESS_TYPE).setTitleText("Datos actualizados correctamente").show();
                             }
                         }, new Response.ErrorListener() {
                             @Override

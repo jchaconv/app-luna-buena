@@ -57,8 +57,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 R.id.nav_home,
                 R.id.consultarUsuarioFragment,
                 R.id.mostrarAsistenciaFragment,
-                R.id.mostrarJustificacionesFragment,
-                R.id.registrarJustificacionFragment)
+                R.id.justificacionesAprobadasFragment,
+                R.id.justificacionesRechazadasFragment)
                 .setDrawerLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);

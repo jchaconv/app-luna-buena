@@ -25,15 +25,15 @@
 
 
     <fragment
-        android:id="@+id/mostrarJustificacionesFragment"
-        android:name="com.example.asistencia.MostrarJustificacionesFragment"
-        android:label="Mis Justificaciones"
-        tools:layout="@layout/activity_tabs" />
+        android:id="@+id/justificacionesAprobadasFragment"
+        android:name="com.example.asistencia.AprobadasFragment"
+        android:label="Justificaciones Aprobadas"
+        tools:layout="@layout/fragment_aprobadas" />
 
     <fragment
-        android:id="@+id/registrarJustificacionFragment"
-        android:name="com.example.asistencia.RegistrarJustificacionFragment"
-        android:label="Registro de Justificaciones"
-        tools:layout="@layout/fragment_registrar_justificacion" />
+        android:id="@+id/justificacionesRechazadasFragment"
+        android:name="com.example.asistencia.RechazadasFragment"
+        android:label="Justificaciones Rechazadas"
+        tools:layout="@layout/fragment_rechazadas" />
 
 </navigation>
